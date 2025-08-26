@@ -9,7 +9,7 @@ async function sendChatRequest(event) {
   console.log("Prompt sent:", prompt);
 
   try {
-    const response = await fetch("http://localhost:8080/chat", {
+    const response = await fetch("https://gemini-chat-test.onrender.com/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
