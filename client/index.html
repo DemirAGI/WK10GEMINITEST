@@ -1,26 +1,26 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Google Gemini Fetching</title>
-    <link rel="stylesheet" href="/src/style.css" />
-    <script type="module" src="/src/app.js"></script>
-  </head>
-  <body>
-    <header>
-      <h1>Chat with Gemini</h1>
-    </header>
-    <section id="form-section">
-      <form id="chat-form">
-        <label for="prompt">Enter your prompt:</label>
-        <input id="prompt" name="prompt" required />
-        <button type="submit">Go!</button>
-      </form>
-    </section>
-    <section id="responses">
-      <h2>Responses</h2>
-      <div id="response-list"></div>
-    </section>
-  </body>
-</html>
+   <html lang="en">
+     <head>
+       <meta charset="UTF-8" />
+       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+       <title>Google Gemini Fetching</title>
+       <link rel="stylesheet" href="/src/style.css" />
+       <script type="module" src="/src/app.js"></script>
+     </head>
+     <body>
+       <header>
+         <h1>Chat with Gemini</h1>
+       </header>
+       <section id="form-section">
+         <form id="chat-form" method="post">
+           <label for="prompt">Enter your prompt:</label>
+           <input id="prompt" name="prompt" required />
+           <button type="submit">Go!</button>
+         </form>
+       </section>
+       <section id="responses">
+         <h2>Responses</h2>
+         <div id="response-list"></div>
+       </section>
+     </body>
+   </html>

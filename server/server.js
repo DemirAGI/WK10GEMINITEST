@@ -1,39 +1,45 @@
 import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import { GoogleGenerativeAI } from '@google/generative-ai';
+   import cors from 'cors';
+   import dotenv from 'dotenv';
+   import { GoogleGenerativeAI } from '@google/generative-ai';
 
-dotenv.config();
+   dotenv.config();
 
-const app = express();
-const PORT = process.env.PORT || 8080; // Render's port or 8080
+   const app = express();
+   const PORT = process.env.PORT || 8080; // Use Render's PORT or default to 8080
 
-app.use(cors());
-app.use(express.json());
+   app.use(cors({ origin: '*' })); // Explicit CORS for all origins
+   app.use(express.json());
 
-const ai = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+   // Validate API key presence
+   if (!process.env.GEMINI_API_KEY) {
+     console.error('Error: GEMINI_API_KEY is not set in environment variables');
+     process.exit(1);
+   }
 
-app.get("/", (request, response) => {
-  response.json("This is just the get endpoint. Move along, please");
-});
+   const ai = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-app.post("/chat", async (request, response) => {
-  const prompt = request.body.prompt;
-  if (!prompt) {
-    return response.status(400).json("No prompt given.");
-  }
+   app.get("/", (request, response) => {
+     response.json("This is just the get endpoint. Move along, please");
+   });
 
-  try {
-    const model = ai.getGenerativeModel({ model: "gemini-1.5-flash" });
-    const result = await model.generateContent(prompt);
-    const geminiResponse = result.response.text();
-    response.json(geminiResponse);
-  } catch (error) {
-    console.error('Error with Gemini API:', error);
-    response.status(500).json("Error generating response from Gemini");
-  }
-});
+   app.post("/chat", async (request, response) => {
+     const prompt = request.body.prompt;
+     if (!prompt) {
+       return response.status(400).json("No prompt given.");
+     }
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+     try {
+       const model = ai.getGenerativeModel({ model: "gemini-1.5-flash" });
+       const result = await model.generateContent(prompt);
+       const geminiResponse = result.response.text();
+       response.json(geminiResponse);
+     } catch (error) {
+       console.error('Error with Gemini API:', error);
+       response.status(500).json(`Error generating response from Gemini: ${error.message}`);
+     }
+   });
+
+   app.listen(PORT, () => {
+     console.log(`Server running on http://localhost:${PORT}`);
+   });
