@@ -24,8 +24,8 @@ import express from 'express';
 
          app.post("/chat", async (request, response) => {
            const { protein, allergens } = request.body;
-           if (!protein) {
-             return response.status(400).json("No protein target provided.");
+           if (!protein || typeof protein !== 'string' || protein.trim() === "") {
+             return response.status(400).json("No valid protein target provided.");
            }
 
            try {

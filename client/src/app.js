@@ -5,8 +5,19 @@ const responseList = document.getElementById("response-list");
 
          async function sendChatRequest(event) {
            event.preventDefault();
-           const protein = event.target.protein.value;
-           const allergens = event.target.allergens.value;
+           const protein = String(event.target.protein.value).trim();
+           const allergens = [
+             event.target.allergen1.value.trim(),
+             event.target.allergen2.value.trim(),
+             event.target.allergen3.value.trim(),
+             event.target.allergen4.value.trim(),
+             event.target.allergen5.value.trim(),
+             event.target.allergen6.value.trim(),
+             event.target.allergen7.value.trim(),
+             event.target.allergen8.value.trim(),
+             event.target.allergen9.value.trim(),
+             event.target.allergen10.value.trim()
+           ].filter(a => a).join(", "); // Join non-empty allergens
            console.log("Protein target:", protein, "Allergens:", allergens);
 
            // Validate protein input

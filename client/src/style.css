@@ -24,15 +24,11 @@ body {
          label {
            font-weight: bold;
          }
-         input, textarea {
+         input {
            padding: 8px;
            font-size: 16px;
            border: 1px solid #ddd;
            border-radius: 4px;
-         }
-         textarea {
-           resize: vertical;
-           min-height: 80px;
          }
          button {
            padding: 10px 20px;
@@ -53,7 +49,7 @@ body {
            margin: 10px 0;
            padding: 10px;
            border-bottom: 1px solid #ddd;
-           white-space: pre-wrap; /* Preserve formatting from Gemini */
+           white-space: pre-wrap;
          }
          @media (max-width: 600px) {
            body {
@@ -62,7 +58,7 @@ body {
            h1, h2 {
              font-size: 1.5em;
            }
-           input, textarea, button {
+           input, button {
              font-size: 14px;
            }
          }
