@@ -24,7 +24,7 @@ if (!prompt) {
     return response.status(400).json("no prompt given.");
 }
 try {
-const model = ai.getGenerativeModel({ model: "gemini-2.0.flash-001" });
+const model = ai.getGenerativeModel({ model: "gemini-2.0.flash" });
 const result = await model.generateContent(prompt);
 const geminiResponse = result.response.text();
 response.json(geminiResponse);
