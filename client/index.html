@@ -1,26 +1,28 @@
 <!doctype html>
-   <html lang="en">
-     <head>
-       <meta charset="UTF-8" />
-       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-       <title>Google Gemini Fetching</title>
-       <link rel="stylesheet" href="/src/style.css" />
-       <script type="module" src="/src/app.js"></script>
-     </head>
-     <body>
-       <header>
-         <h1>Chat with Gemini</h1>
-       </header>
-       <section id="form-section">
-         <form id="chat-form" method="post">
-           <label for="prompt">Enter your prompt:</label>
-           <input id="prompt" name="prompt" required />
-           <button type="submit">Go!</button>
-         </form>
-       </section>
-       <section id="responses">
-         <h2>Responses</h2>
-         <div id="response-list"></div>
-       </section>
-     </body>
-   </html>
+         <html lang="en">
+           <head>
+             <meta charset="UTF-8" />
+             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+             <title>Target Protein Meal Calculator</title>
+             <link rel="stylesheet" href="/src/style.css" />
+             <script type="module" src="/src/app.js"></script>
+           </head>
+           <body>
+             <header>
+               <h1>Target Protein Meal Calculator</h1>
+             </header>
+             <section id="form-section">
+               <form id="chat-form" method="post">
+                 <label for="protein">Protein Target (grams, 0-25000):</label>
+                 <input type="number" id="protein" name="protein" min="0" max="25000" pattern="\\d+" required />
+                 <label for="allergens">Allergens to Exclude (comma-separated, e.g., nuts, dairy):</label>
+                 <textarea id="allergens" name="allergens" rows="4"></textarea>
+                 <button type="submit">Get Recipe!</button>
+               </form>
+             </section>
+             <section id="responses">
+               <h2>Recipes</h2>
+               <div id="response-list"></div>
+             </section>
+           </body>
+         </html>
